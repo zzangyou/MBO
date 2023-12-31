@@ -1,19 +1,11 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
 import App from './App.vue'
+import './registerServiceWorker'
 import router from './router'
 
-const app = createApp(App)
+createApp(App).use(router).mount('#app')
 
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app');
-
-let deferredPrompt;
+let deferredPrompt: any = null;
 
 window.addEventListener('beforeinstallprompt', (event) => {
   // 阻止默认的应用安装提示
@@ -32,7 +24,7 @@ function showSavePrompt() {
     deferredPrompt.prompt();
     
     // 处理用户响应
-    deferredPrompt.userChoice.then((choiceResult) => {
+    deferredPrompt.userChoice.then((choiceResult: any) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('User accepted the install prompt');
       } else {
