@@ -4,16 +4,33 @@ import HomeView from '../views/HomeView.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: () => import('@/layouts/CommonLayout.vue'),
+    children: [
+      {
+        path: '',
+        redirect: '/goal',
+      },
+      {
+        path: '/goal',
+        component: () => import('@/pages/Goal/index.vue'),
+      },
+      {
+        path: '/abstract',
+        component: () => import('@/pages/Abstract/index.vue')
+      },
+      {
+        path: '/user',
+        component: () => import('@/pages/User/index.vue'),
+      },
+      {
+        path: '/task',
+        component: () => import('@/pages/Task/index.vue'),
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path:'/error',
+    component:() => import('@/pages/ErrorPage/index.vue')
   }
 ]
 
