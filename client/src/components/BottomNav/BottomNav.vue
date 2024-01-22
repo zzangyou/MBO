@@ -5,12 +5,10 @@
     class="menu"
     @click="menuClick"
   >
-    <template v-for="item in items">
-      <a-menu-item :key="item.key" class="menu-item">
-        <component :is="$icons[item.icon]" :style="{ fontSize: '32px' }" />
-        <span class="item-title">{{ item.title }}</span>
-      </a-menu-item>
-    </template>
+    <a-menu-item v-for="item in items" :key="item.key" class="menu-item">
+      <component :is="$icons[item.icon]" :style="{ fontSize: '32px' }" />
+      <span class="item-title">{{ item.title }}</span>
+    </a-menu-item>
   </a-menu>
 </template>
 <script lang="ts" setup>
@@ -56,6 +54,15 @@ const menuClick = ({ key }) => {
   router.push({
     path: '/' + key,
   })
+  function myInstanceOf(left, right) {
+    let proto = Object.getPrototypeof()
+    let prototype = right.prototype
+    while (true) {
+      if (!proto) return false
+      if (proto === prototype) return true
+      proto = Object.getPrototypeof(proto)
+    }
+  }
 }
 </script>
 <style lang="scss">

@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue'
-import BottomNav from '../components/BottomNav/BottomNav.vue'
+import BottomNav from '@/components/BottomNav/BottomNav.vue'
 
 const contentStyle: CSSProperties = {
   textAlign: 'center',
