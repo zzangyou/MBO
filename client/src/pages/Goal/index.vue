@@ -13,7 +13,15 @@
     </template>
   </a-page-header>
   <GoalCreator :open="open" @update:open="toggleModal" />
-  <a-space direction="vertical">
+  <a-space direction="vertical" class="layout-content">
+    <GoalItem @click="toGoalDetail" />
+    <GoalItem />
+    <GoalItem />
+    <GoalItem />
+    <GoalItem />
+    <GoalItem />
+    <GoalItem />
+    <GoalItem />
     <GoalItem />
     <GoalItem />
     <GoalItem />
@@ -25,12 +33,23 @@
 <script lang="ts" setup>
 import { h, ref } from 'vue'
 import { Button } from 'ant-design-vue'
+import { useRouter } from 'vue-router'
 import GoalCreator from '@/components/GoalCreator/GoalCreator.vue'
 import GoalItem from '@/pages/Goal/components/GoalItem.vue'
 let open = ref<boolean>(false)
+const gid = ref<Number>(1)
+const router = useRouter()
 const toggleModal = () => {
-  console.log('click')
   console.log(open.value)
   open.value = !open.value
 }
+const toGoalDetail = () => {
+  console.log(gid)
+  router.push('/goal/' + gid.value)
+}
 </script>
+<style lang="scss" scoped>
+.layout-content {
+  width: 90%;
+}
+</style>

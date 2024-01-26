@@ -3,7 +3,7 @@
     <a-drawer
       :width="500"
       title="创建目标"
-      height="800"
+      height="90%"
       placement="bottom"
       :open="props.open"
       @close="toggleDrawer"
@@ -64,29 +64,28 @@
             </template>
           </a-select>
         </a-card>
+        <a-card @click="toModelCenter">
+          <AppstoreTwoTone />
+          <span style="margin-left: 7px;">从模板库快速创建</span>
+        </a-card>
       </a-space>
     </a-drawer>
+    <GoalCenter :showCenter="showCenter" @update:showCenter="toModelCenter" />
   </div>
 </template>
 <script lang="ts" setup>
+import { GoalItem } from '@/types/Goal/index.ts'
 import { onMounted, ref, watch } from 'vue'
 import { Dayjs } from 'dayjs'
 import type { SelectProps } from 'ant-design-vue'
-const confirmLoading = ref<boolean>(false)
+import GoalCenter from '@/components/GoalCreator/GoalCenter.vue'
 const props = defineProps({
   open: Boolean,
 })
 const emit = defineEmits(['update:open'])
-
+let showCenter = ref<boolean>(false)
 const toggleDrawer = () => {
   emit('update:open')
-}
-//
-interface GoalItem {
-  goalColor: string
-  goalName: string
-  goalDescription: string
-  goalTime?: string[]
 }
 const goalItem = ref<GoalItem>({
   goalColor: '#B0AEC6',
@@ -121,30 +120,6 @@ const options = ref<SelectProps['options']>([
     label: '',
   },
   {
-    value: '#C6D9F2',
-    label: '',
-  },
-  {
-    value: '#C4BBA0',
-    label: '',
-  },
-  {
-    value: '#EDB42C',
-    label: '',
-  },
-  {
-    value: '#607D8B',
-    label: '',
-  },
-  {
-    value: '#B0BEC5',
-    label: '',
-  },
-  {
-    value: '#F6F4F1',
-    label: '',
-  },
-  {
     value: '#B2BDBE',
     label: '',
   },
@@ -165,10 +140,12 @@ const options = ref<SelectProps['options']>([
     label: '',
   },
 ])
-
-watch(goalItem.goalColor, (val) => {
-  console.log(`selected:`, val)
-})
+// 跳转至模板中心
+const toModelCenter = () => {
+  console.log(showCenter.value)
+  showCenter.value = !showCenter.value
+  emit('update:open')
+}
 </script>
 <style lang="scss">
 .ant-drawer .ant-drawer-title {

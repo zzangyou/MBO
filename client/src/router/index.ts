@@ -14,6 +14,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/goal',
         component: () => import('@/pages/Goal/index.vue'),
       },
+      
       {
         path: '/abstract',
         component: () => import('@/pages/Abstract/index.vue')
@@ -31,7 +32,11 @@ const routes: Array<RouteRecordRaw> = [
   {
     path:'/error',
     component:() => import('@/pages/ErrorPage/index.vue')
-  }
+  },
+  {
+    path: '/goal/:id',
+    component: () => import('@/pages/Goal/components/GoalDetail.vue'),
+  },
 ]
 
 const router = createRouter({

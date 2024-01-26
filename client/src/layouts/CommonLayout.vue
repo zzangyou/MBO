@@ -11,13 +11,16 @@ import type { CSSProperties } from 'vue'
 import BottomNav from '@/components/BottomNav/BottomNav.vue'
 
 const contentStyle: CSSProperties = {
+  backgroundColor: '#ebeff9',
   textAlign: 'center',
-  minHeight: 120,
+  height: '100%',
+  minHeight: 620,
   lineHeight: '120px',
   color: '#fff',
 }
 const footerStyle: CSSProperties = {
   position: 'fixed',
+  padding: '10px',
   bottom: 0,
   width: '100%',
   textAlign: 'center',
@@ -26,3 +29,8 @@ const footerStyle: CSSProperties = {
   padding: 0,
 }
 </script>
+<style lang="scss" scoped>
+:deep .menu {
+  padding: 10px 0 0 0;
+}
+</style>

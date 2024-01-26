@@ -1,20 +1,28 @@
 <template>
-  <a-card style="width: 370px;" class="goal-card">
-    <div class="color-box" :style="{ backgroundColor: goalColor }"></div>
+  <a-card style="width: 100%;" class="goal-card">
+    <div
+      class="color-box"
+      :style="{ backgroundColor: iGoalItem.goalColor }"
+    ></div>
     <div class="goal-container">
       <div class="goal-item-title">
-        😁 快点做完毕设吧
+        {{ iGoalItem.goalName }}
       </div>
       <div class="goal-item-date">
         <CalendarOutlined />
-        2002年2月18日截止
+        {{ iGoalItem.goalEnd }}
       </div>
     </div>
   </a-card>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-const goalColor = ref<string>('#B0AEC6')
+import { GoalItem } from '@/types/Goal/index.ts'
+const iGoalItem = ref<GoalItem>({
+  goalColor: '#B0AEC6',
+  goalName: '😁 快点做完毕设吧',
+  goalEnd: '2002年2月18日',
+})
 </script>
 
 <style lang="scss" scoped>
@@ -31,8 +39,6 @@ const goalColor = ref<string>('#B0AEC6')
   flex-direction: column;
   align-items: flex-start;
   padding: 0 12px;
-  // border-left: 6px solid;
-  // border-radius: 2px;
 
   .goal-item-title {
     font-weight: 500;
