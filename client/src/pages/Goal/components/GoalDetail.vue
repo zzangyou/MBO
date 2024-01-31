@@ -5,7 +5,31 @@
     @back="backToHome"
   >
     <template #extra>
-      <a-button :icon="h(EllipsisOutlined)" type="text" size="large" />
+      <a-dropdown :trigger="['click']">
+        <a class="ant-dropdown-link" @click.prevent>
+          <EllipsisOutlined />
+        </a>
+        <template #overlay>
+          <a-menu class="tool-bar" @click="onClick">
+            <a-menu-item key="EDIT">
+              编辑目标
+              <EditOutlined />
+            </a-menu-item>
+            <a-menu-item key="ACCOMPLISH">
+              完成目标
+              <CheckCircleOutlined />
+            </a-menu-item>
+            <a-menu-item key="SUSPEND">
+              暂停目标
+              <PauseCircleOutlined />
+            </a-menu-item>
+            <a-menu-item key="DELETE">
+              删除目标
+              <DeleteOutlined />
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
     </template>
   </a-page-header>
   <a-card :bordered="false" class="layout-content">
@@ -69,15 +93,20 @@
     </div>
     <a-button type="primary" @click="" class="create-button">创建任务</a-button>
   </a-card>
+  <GoalCreator :open="open" @update:open="open = !open" />
 </template>
 <script lang="ts" setup>
 import { h, ref } from 'vue'
 import { EllipsisOutlined } from '@ant-design/icons-vue'
+import type { MenuProps } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { GoalItem } from '@/types/Goal/index.ts'
 import { getDayDifference } from '@/utils/index.ts'
+import { Modal } from 'ant-design-vue'
+import GoalCreator from '@/components/GoalCreator/GoalCreator.vue'
 import TaskItem from '@/components/TaskItem/TaskItem.vue'
 const bottom = ref<number>(100)
+let open = ref<boolean>(false)
 const iGoalItem = ref<GoalItem>({
   goalColor: '#B0AEC6',
   goalName: '😁 快点做完毕设吧',
@@ -96,9 +125,39 @@ const iGoalItem = ref<GoalItem>({
 })
 const router = useRouter()
 const remainingDays = getDayDifference(iGoalItem.value.goalEnd)
+//路由后退
 const backToHome = () => {
-  console.log('back', iGoalItem.value.goalEnd)
   router.go(-1)
+}
+// 工具栏事件
+const MODE = {
+  edit: 'EDIT',
+  delete: 'DELETE',
+  accomplish: 'ACCOMPLISH',
+  suspend: 'SUSPEND',
+}
+const onClick: MenuProps['onClick'] = ({ key }) => {
+  console.log(`Click on item ${key}`)
+  switch (key) {
+    case MODE.edit:
+      console.log(`edittt`)
+      open.value = !open.value
+      return
+    case MODE.delete:
+      Modal.warning({
+        title: '确定要进行删除操作吗？',
+        content: '目标和所属任务将被删除，并且无法恢复！',
+      })
+      return
+    case MODE.accomplish:
+      Modal.info({
+        title: '确定完成这个目标',
+        onOk() {
+          console.log('ok')
+        },
+      })
+      return
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -114,6 +173,9 @@ $shallowColor: #8c8888;
   margin: 7px;
   padding: 10px 15px;
   border-radius: 6px;
+}
+:deep .ant-modal .ant-modal-content {
+  padding: 10px 15px 1px;
 }
 .goal-detail {
   display: flex;
@@ -184,5 +246,8 @@ $shallowColor: #8c8888;
   bottom: 50px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+.tool-bar .anticon {
+  margin-left: 10px;
 }
 </style>

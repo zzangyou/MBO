@@ -8,21 +8,23 @@
       <div class="goal-item-title">
         {{ iGoalItem.goalName }}
       </div>
-      <div class="goal-item-date">
-        <CalendarOutlined />
-        {{ iGoalItem.goalEnd }}
-      </div>
+      <slot name="date"></slot>
     </div>
+    <div class="goal-slot"><slot name="icon"></slot></div>
   </a-card>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { GoalItem } from '@/types/Goal/index.ts'
-const iGoalItem = ref<GoalItem>({
-  goalColor: '#B0AEC6',
-  goalName: '😁 快点做完毕设吧',
-  goalEnd: '2002年2月18日',
+
+const props = defineProps({
+  iGoalItem: Object,
 })
+// const iGoalItem = ref<GoalItem>({
+//   goalColor: '#B0AEC6',
+//   goalName: '😁 快点做完毕设吧',
+//   goalEnd: '2002年2月18日',
+// })
 </script>
 
 <style lang="scss" scoped>
@@ -44,10 +46,9 @@ const iGoalItem = ref<GoalItem>({
     font-weight: 500;
     font-size: 16px;
   }
-  .goal-item-date {
-    margin-top: 4px;
-    font-size: 13px;
-    color: #8c8888;
-  }
+}
+.goal-slot {
+  position: absolute;
+  right: 18px;
 }
 </style>

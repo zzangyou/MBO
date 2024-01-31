@@ -185,6 +185,7 @@ const modelList = ref<GoalItem[]>([
 :deep .ant-card-head {
   padding: 4px 9px !important;
 }
+
 .goal-container {
   display: flex;
   flex-direction: column;

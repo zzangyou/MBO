@@ -37,6 +37,10 @@ const routes: Array<RouteRecordRaw> = [
     path: '/goal/:id',
     component: () => import('@/pages/Goal/components/GoalDetail.vue'),
   },
+  {
+    path: '/goal/accomplished',
+    component: () => import('@/pages/Goal/components/GoalAccomplished.vue'),
+  },
 ]
 
 const router = createRouter({
