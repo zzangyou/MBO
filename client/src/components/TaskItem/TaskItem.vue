@@ -73,6 +73,14 @@ const finishGoal = () => {}
 }
 .todo-text {
   color: #4096ff;
-  margin: 0 5px 0 0;
+  margin: 0 7px 0 0;
+}
+
+.ant-list-item {
+  border: 1px solid rgba(5, 5, 5, 0.06);
+  background-color: #fff;
+  margin: 12px;
+  border-radius: 10px;
+  padding: 8px 20px !important;
 }
 </style>

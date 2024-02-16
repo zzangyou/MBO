@@ -15,17 +15,17 @@ const contentStyle: CSSProperties = {
   textAlign: 'center',
   height: '100%',
   minHeight: 620,
-  lineHeight: '120px',
   color: '#fff',
 }
 const footerStyle: CSSProperties = {
+  zIndex: 111,
   position: 'fixed',
   padding: '10px',
   bottom: 0,
   width: '100%',
   textAlign: 'center',
   color: '#fff',
-  backgroundColor: '#7dbcea',
+  backgroundColor: '#fff',
   padding: 0,
 }
 </script>

@@ -9,6 +9,7 @@
         {{ iGoalItem.goalName }}
       </div>
       <slot name="date"></slot>
+      <slot name="review"></slot>
     </div>
     <div class="goal-slot"><slot name="icon"></slot></div>
   </a-card>

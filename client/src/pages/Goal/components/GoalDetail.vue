@@ -42,51 +42,63 @@
         <div class="goal-item-title">
           {{ iGoalItem.goalName }}
         </div>
+        <span class="state-box">{{ iGoalItem.state }}</span>
       </div>
       <div class="goal-description">
         <SmileOutlined />
         {{ iGoalItem.goalDescription }}
       </div>
     </div>
-
-    <a-card-grid class="time-box" style="width: 50%; text-align: center;">
-      剩余{{ remainingDays }}天
-      <div class="goal-end">{{ iGoalItem.goalEnd }}</div>
-      <a-progress :percent="30" :showInfo="false" strokeColor="#1677ff" />
-    </a-card-grid>
-
-    <a-card-grid
-      class="progress-card"
-      style="width: 40%; text-align: center;"
-      :hoverable="false"
+    <div
+      v-if="iGoalItem.state == GoalStatus.progress"
+      class="progress-container"
     >
-      <a-progress
-        type="circle"
-        :percent="iGoalItem.goalProgress"
-        :showInfo="false"
-        :size="30"
-      />
-      <div class="progress-card-info">
-        <div>{{ iGoalItem.goalProgress }}%</div>
-        <div class="progress-card-text">目标进度</div>
-      </div>
-    </a-card-grid>
-    <a-card-grid class="progress-card" style="width: 50%; text-align: center;">
-      <FlagOutlined :style="{ fontSize: '25px', color: '#1677ff' }" />
-      <div class="progress-card-info">
-        <div>{{ iGoalItem.completedTimes }}</div>
-        <div class="progress-card-text">已完成次数</div>
-      </div>
-    </a-card-grid>
-    <a-card-grid class="progress-card" style="width: 40%; text-align: center;">
-      <ClockCircleOutlined
-        :style="{ fontSize: '25px', color: '#1677ff', marginleft: '5px' }"
-      />
-      <div class="progress-card-info">
-        <div>{{ iGoalItem.goalTiming }}</div>
-        <div class="progress-card-text">目标计时</div>
-      </div>
-    </a-card-grid>
+      <a-card-grid class="time-box" style="width: 50%; text-align: center;">
+        剩余{{ remainingDays }}天
+        <div class="goal-end">{{ iGoalItem.goalEnd }}</div>
+        <a-progress :percent="30" :showInfo="false" strokeColor="#1677ff" />
+      </a-card-grid>
+
+      <a-card-grid
+        class="progress-card"
+        style="width: 40%; text-align: center;"
+        :hoverable="false"
+      >
+        <a-progress
+          type="circle"
+          :percent="iGoalItem.goalProgress"
+          :showInfo="false"
+          :size="30"
+        />
+        <div class="progress-card-info">
+          <div>{{ iGoalItem.goalProgress }}%</div>
+          <div class="progress-card-text">目标进度</div>
+        </div>
+      </a-card-grid>
+      <a-card-grid
+        class="progress-card"
+        style="width: 50%; text-align: center;"
+      >
+        <FlagOutlined :style="{ fontSize: '25px', color: '#1677ff' }" />
+        <div class="progress-card-info">
+          <div>{{ iGoalItem.completedTimes }}</div>
+          <div class="progress-card-text">已完成次数</div>
+        </div>
+      </a-card-grid>
+      <a-card-grid
+        class="progress-card"
+        style="width: 40%; text-align: center;"
+      >
+        <ClockCircleOutlined
+          :style="{ fontSize: '25px', color: '#1677ff', marginleft: '5px' }"
+        />
+        <div class="progress-card-info">
+          <div>{{ iGoalItem.goalTiming }}</div>
+          <div class="progress-card-text">目标计时</div>
+        </div>
+      </a-card-grid>
+    </div>
+    <div v-else></div>
     <div class="todo-list">
       <div class="todo-task">待办任务 {{ iGoalItem.taskList.length }}</div>
       <TaskItem />
@@ -103,6 +115,7 @@ import { useRouter } from 'vue-router'
 import { GoalItem } from '@/types/Goal/index.ts'
 import { getDayDifference } from '@/utils/index.ts'
 import { Modal } from 'ant-design-vue'
+import { GoalStatus } from '@/types/Goal/index.ts'
 import GoalCreator from '@/components/GoalCreator/GoalCreator.vue'
 import TaskItem from '@/components/TaskItem/TaskItem.vue'
 const bottom = ref<number>(100)
@@ -114,6 +127,7 @@ const iGoalItem = ref<GoalItem>({
   goalDescription: '别在发呆了！赶紧干活呜呜呜',
   goalProgress: 40,
   completedTimes: 8,
+  state: GoalStatus.progress,
   goalTiming: 0,
   taskList: [
     {
@@ -249,5 +263,17 @@ $shallowColor: #8c8888;
 }
 .tool-bar .anticon {
   margin-left: 10px;
+}
+.state-box {
+  background-color: $boxColor;
+  font-size: 12px;
+  color: $textColor;
+  border-radius: 4px;
+  margin: 0 10px;
+  padding: 0 5px;
+}
+.progress-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

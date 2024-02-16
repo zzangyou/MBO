@@ -60,7 +60,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 2,
@@ -68,7 +78,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 3,
@@ -76,7 +96,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 4,
@@ -84,7 +114,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 5,
@@ -92,7 +132,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 6,
@@ -100,7 +150,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 7,
@@ -108,7 +168,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
   {
     gid: 8,
@@ -116,7 +186,17 @@ const iGoalList = ref<GoalItem[]>([
     goalProgress: 40,
     goalColor: '#B0AEC6',
     goalName: '😁 快点做完毕设吧',
-    goalEnd: '2002年2月18日',
+    goalEnd: '2023-06-20',
+    goalTiming: 0,
+    goalDescription: '别在发呆了！赶紧干活呜呜呜',
+    completedTimes: 8,
+    taskList: [
+      {
+        taskName: '不要偷偷刷小红书',
+        taskStart: '20022年2月18日',
+        taskEnd: '20023年2月18日',
+      },
+    ],
   },
 ])
 

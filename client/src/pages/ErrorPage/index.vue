@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is a error page</h1>
+    <vue-hash-calendar />
   </div>
 </template>

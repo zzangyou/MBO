@@ -5,13 +5,15 @@ import 'ant-design-vue/dist/reset.css';
 import './registerServiceWorker'
 import router from './router'
 import * as Icons from '@ant-design/icons-vue'
+import vueHashCalendar from 'vue3-hash-calendar'
+import 'vue3-hash-calendar/es/index.css'
 import { nextTick } from "@vue/runtime-core"
 
 
 // 创建对象
 const app = createApp(App)
 // 使用并挂载
-app.use(router).use(Antd).mount('#app')
+app.use(router).use(Antd).use(vueHashCalendar).mount('#app')
 
 // 必须使用 nextTick，不然会有加载顺序问题，导致绑定失败
 nextTick(() => {
